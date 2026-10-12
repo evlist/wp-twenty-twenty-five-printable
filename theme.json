@@ -1,0 +1,16 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"customTemplates": [
+		{
+			"name": "publication-randonnee",
+			"title": "Publication randonnée",
+			"postTypes": [ "post" ]
+		},
+		{
+			"name": "publication-randonnee-print",
+			"title": "Publication randonnée print",
+			"postTypes": [ "post" ]
+		}
+	]
+}
