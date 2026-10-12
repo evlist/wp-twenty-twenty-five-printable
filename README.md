@@ -27,7 +27,7 @@ plus the other templates of the site (for example the one of a category). **Only
 
 ## Installing
 
-The directory of the theme must be called `twentytwentyfive-printable` (the template parts of the templates do not depend on it, the identifiers the plugin Otherguise keeps for the variants do: `twentytwentyfive-printable//publication-randonnee`). It is mounted like the plugins: a clone of this repository under `wp-content/themes/twentytwentyfive-printable`. `tools/staging/rollout.sh` of the plugin repository treats it as it treats the plugins (tag, push, apply).
+The **name of the directory is the slug of the theme**, and the identifiers that the plugin Otherguise keeps for the variants contain it (`wp-twenty-twenty-five-printable//publication-randonnee`), so it must be **the same on every site**. It is mounted like the plugins: a clone of this repository, under `wp-content/themes/wp-twenty-twenty-five-printable` (the name of the repository). `tools/staging/rollout.sh` of the plugin repository treats it as it treats the plugins (tag, push, apply).
 
 After activating it on a site: the variants of the modes screen refer to the templates **with the theme in their identifier**, so they must be declared again for this theme.
 
