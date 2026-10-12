@@ -1,0 +1,108 @@
+/*
+ * SPDX-FileCopyrightText: 2026 Eric van der Vlist <vdv@dyomedea.com>
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ *
+ * Loaded by the Otherguise Modes module only when the mode "print" is active (convention: modes/<mode>.css of the theme).
+ * Taken as is from assets/wp-pdf-helper-print.css of wp-pdf-helper, which loaded it for the query string ?print.
+ */
+
+
+
+video, 
+.attached-videos,
+header, 
+.plyr, 
+.leaflet-marker-photo, 
+.leaflet-top, 
+.leaflet-bottom, 
+.leaflet-control-container,
+#wpgpxmaps_downloadfile,
+div:empty,
+nav,
+.wp-block-comments,
+.wp-block-query,
+footer,
+.other-posts,
+.no-print,
+#wpadminbar,
+.skip-link.screen-reader-text {
+    display: none !important;
+}
+
+html,
+main,
+#post-content {
+	padding: 0px !important;
+	margin: 0px !important;
+}
+
+
+.gallery,
+.attached-gpx {
+    page-break-before: auto; /* 'always,' 'avoid,' 'left,' 'inherit,' or 'right' */
+    page-break-after: auto; /* 'always,' 'avoid,' 'left,' 'inherit,' or 'right' */
+    page-break-inside: avoid; /* or 'auto' */
+}
+
+#post-grid {
+	display: flex;
+}
+
+#post-grid-column-2 {
+    margin-block-start: 0px;
+	flex: 70%;
+	padding-left: 10px;
+}
+
+#post-grid-column-1 {
+    margin-block-start: 0px;
+	flex: 30%;
+}
+
+.wpgpxmaps_summary {
+	font-size: var(--wp--preset--font-size--small);
+}
+
+.leaflet-control-attribution {
+	font-size: 8px;
+}
+
+.date-prefix {
+	text-transform: capitalize;
+}
+
+.date-part {
+	margin-bottom: 0px !important;
+	margin-top: 5px !important;
+	font-size: var(--wp--preset--font-size--medium) !important;
+}
+
+.entry-content {
+        font-size: var(--wp--preset--font-size--small) !important;
+	text-align: justify;
+}
+
+.wp-block-post-excerpt {
+	text-align: justify;
+}
+
+.title-date-line > .date-part {
+    padding-top: 16px;
+}
+
+.title-date-line {
+    margin-bottom: 0px !important;
+}
+
+.wp-block-post-content, .wp-block-wpprg-wp-printable-gallery {
+    margin-top: 0px !important;
+}
+
+:root :where(.is-layout-constrained) > * {
+  margin-block-start: 0.3rem !important;
+}
+
+.gallery figure {
+    margin: 2px !important;
+}
+

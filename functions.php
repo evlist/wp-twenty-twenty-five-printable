@@ -22,6 +22,9 @@ function twentytwentyfive_printable_styles() {
 		array( 'twentytwentyfive-style' ),
 		wp_get_theme()->get( 'Version' )
 	);
+
+	// The icon of the link to the print mode is a Dashicon; wp-pdf-helper loaded the font for every visitor.
+	wp_enqueue_style( 'dashicons' );
 }
 add_action( 'wp_enqueue_scripts', 'twentytwentyfive_printable_styles' );
 

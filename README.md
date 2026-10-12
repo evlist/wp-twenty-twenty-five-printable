@@ -45,3 +45,7 @@ Tried on a scratch WordPress 7.1.3 (Twenty Twenty-Five 1.5): the ten templates a
 ## License
 
 GPL-3.0-or-later, see `LICENSES/`.
+
+## Stylesheets of the modes
+
+`modes/<mode>.css` is loaded by the Modes module of Otherguise **only when that mode is active** (not through `@media print`, since the print format is a mode of the site, not a media query). `modes/print.css` is the print format of the blog, taken from wp-pdf-helper. `style.css` stays the stylesheet of every mode.
