@@ -30,7 +30,7 @@ The classes of the print templates (`print-link`, `author-line`, `title-date-lin
 1. **No `theme` attribute in `wp:template-part` blocks.** The site editor writes `"theme":"twentytwentyfive"`; in a child theme such a part renders as **nothing, silently** (tried on WordPress 7.1.3). Without the attribute the part is resolved in the active theme, which falls back to the parent: `<!-- wp:template-part {"slug":"header-large-title","area":"header"} /-->`.
 2. **Edit the files, not the site editor, on staging and production.** A template saved in the site editor is stored in the database and **shadows the file** (tried on WordPress 7.1.3: a database copy attached to the child theme is used instead of the file). Check with `tools/staging/templates.sh check` of the plugin repository, which lists such copies, and removes them (after a backup) when asked.
 3. **Templates of the database attached to the parent theme are not used by the child** (also tried): after switching to this theme, the customised templates of Twenty Twenty-Five of the site stop applying until their content is in `templates/`. Export them **before** switching.
-4. **Styles of the site editor** (the "global styles" saved for Twenty Twenty-Five) are stored per theme and may not follow the switch. Not tried: compare the two sites on staging before and after.
+4. **Styles of the site editor** (the "global styles": the fonts and the colours chosen there) are stored per theme and **do not follow the switch** (observed on the blog: Fira Sans and Literata became Manrope and Fira Code). The rollout script copies the post of the parent for the child theme; writing the choice into `theme.json` would version it.
 
 ## Installing
 
