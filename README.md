@@ -18,8 +18,10 @@ Not carried over: `save-category-autour-de-la-mediterranee-en-velo-2024`, an att
 
 ## What is where
 
-- `style.css`: the header of the theme (`Template: twentytwentyfive` makes it a child theme) and, **to come**, the CSS of the blog that the templates need (it holds none yet: the CSS of the blog is still where it was, see below). A block theme does not load the `style.css` of a child by itself (tried on WordPress 7.1.3): `functions.php` loads it after the parent's, on the site and in the editors.
+- `style.css`: the header of the theme (`Template: twentytwentyfive` makes it a child theme) and the CSS of the blog: the galleries, the alignment of images, the maps and the drop cap, which the plugin Custom CSS & JS used to inject (snippet 33286, frontend, header). A block theme does not load the `style.css` of a child by itself (tried on WordPress 7.1.3): `functions.php` loads it after the parent's, on the site and in the editors.
 - `functions.php`: that, and nothing else.
+
+The classes of the print templates (`print-link`, `author-line`, `title-date-line`, `no-print`...) are **not** in this CSS: it does not define them; where they are styled, if they are, is still to find.
 - `theme.json`: the custom templates (`customTemplates`: name, title, post types), so that they can be chosen in the post editor. **Every template file that is not a standard WordPress template needs an entry there.**
 - `templates/<slug>.html` and `parts/<slug>.html`: one file per template and per template part. **The file name is the slug**, which is what the posts remember (the template chosen for a post is stored by slug), so a slug must not change once posts use it.
 
