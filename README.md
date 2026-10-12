@@ -2,21 +2,25 @@
 
 A child theme of **Twenty Twenty-Five** that holds the templates of Eric van der Vlist's travel blog, in their web and print versions. Until now these templates were edited in the site editor and lived in the database of each site. As files in this repository they are versioned, reviewed with `diff`, and travel to production with the plugins, as part of a *rollout* (see [`wp-otherguise`](https://github.com/evlist/wp-otherguise), `docs/design/rollout.md`). Twenty Twenty-Five itself stays untouched, so its updates cannot overwrite anything.
 
-The pairs of templates it is meant to hold (web / print), as used with the modes of the plugin Otherguise:
+## What it holds
 
-| Web | Print |
+Exported from the staging copy of the blog on 2026-10-12 (the templates and parts that the site editor had stored in the database for Twenty Twenty-Five), without change except that the `theme` attribute of the template parts was removed (rule 1 below):
+
+| Kind | Files |
 |---|---|
-| `journee` | `journee-print` |
-| `publication-randonnee` | `publication-randonnee-print` |
-| `wp-custom-template-r-sum-mensuel-randonn-e` ("Résumé mensuel randonnée") | `wp-custom-template-r-sum-mensuel-randonn-e-print` |
+| Custom templates, web / print | `journee` / `journee-print`; `publication-randonnee` / `publication-randonnee-print`; `wp-custom-template-r-sum-mensuel-randonn-e` ("Résumé mensuel randonnée") / `wp-custom-template-r-sum-mensuel-randonn-e-print` |
+| Customised standard templates | `archive`, `home`, `search`, `single` |
+| Customised template parts | `header` (it only delegates to the part `header-large-title`), `footer` (**empty**: the blog has no footer) |
 
-plus the other templates of the site (for example the one of a category). **Only `publication-randonnee` and its print version are here so far**, copied from `wp-otherguise/docs/examples/`; the others are exported from production with `tools/staging/templates.sh export` of the plugin repository (see below).
+Not carried over: `save-category-autour-de-la-mediterranee-en-velo-2024`, an attempt that is no longer used (Eric, 2026-10-12), and the leftovers of Twenty Twenty-Four that the database still holds.
+
+**Dependency on the database.** `archive`, `home` and `search` show their list of posts through a **reusable block** of the database, `<!-- wp:block {"ref":32919} /-->`. The number is the identifier of that post on the blog; it exists on every site as long as the site is a copy of production, and it must exist on production before the theme is activated there (`wp post get 32919 --field=post_type` says `wp_block`). Turning it into a pattern of the theme would remove the dependency; not done.
 
 ## What is where
 
 - `style.css`: the header of the theme (`Template: twentytwentyfive` makes it a child theme).
 - `theme.json`: the custom templates (`customTemplates`: name, title, post types), so that they can be chosen in the post editor. **Every template file that is not a standard WordPress template needs an entry there.**
-- `templates/<slug>.html`: one file per template. **The file name is the slug**, which is what the posts remember (the template chosen for a post is stored by slug), so a slug must not change once posts use it.
+- `templates/<slug>.html` and `parts/<slug>.html`: one file per template and per template part. **The file name is the slug**, which is what the posts remember (the template chosen for a post is stored by slug), so a slug must not change once posts use it.
 
 ## Rules for the templates
 
@@ -33,7 +37,7 @@ After activating it on a site: the variants of the modes screen refer to the tem
 
 ## Verified
 
-Tried on a scratch WordPress 7.1.3 (Twenty Twenty-Five 1.5): the file templates are found and listed with their title and post type; their template parts render with the rules above; a database copy shadows the file; a database copy attached to the parent theme is ignored. **Never tried on the blog itself**, nor with the site editor.
+Tried on a scratch WordPress 7.1.3 (Twenty Twenty-Five 1.5): the ten templates and the two parts of this repository are found as theme files, the custom ones listed with their title and the post type `post`, the empty footer replaces the one of the parent, and every template renders without a PHP error (the reusable block is missing on that site, so the lists of posts are empty there); their template parts render with the rules above; a database copy shadows the file; a database copy attached to the parent theme is ignored. **Never tried on the blog itself**, nor with the site editor.
 
 ## License
 

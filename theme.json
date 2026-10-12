@@ -3,14 +3,46 @@
 	"version": 3,
 	"customTemplates": [
 		{
+			"name": "journee",
+			"title": "Journée",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "journee-print",
+			"title": "Journée print",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
 			"name": "publication-randonnee",
 			"title": "Publication randonnée",
-			"postTypes": [ "post" ]
+			"postTypes": [
+				"post"
+			]
 		},
 		{
 			"name": "publication-randonnee-print",
 			"title": "Publication randonnée print",
-			"postTypes": [ "post" ]
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "wp-custom-template-r-sum-mensuel-randonn-e",
+			"title": "Résumé mensuel randonnée",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "wp-custom-template-r-sum-mensuel-randonn-e-print",
+			"title": "Résumé mensuel randonnée-print",
+			"postTypes": [
+				"post"
+			]
 		}
 	]
 }
