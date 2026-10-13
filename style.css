@@ -88,11 +88,3 @@ p img.alignright, p img.alignleft {margin-top:0;}
   font-family: 'Ultra', sans-serif;
   font-weight: bolder;
 }
-
-.print-link {
-	text-decoration: none;
-}
-
-.print-link:hover {
-	color: red;
-}
