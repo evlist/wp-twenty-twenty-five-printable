@@ -105,10 +105,3 @@ main,
 .gallery figure {
     margin: 2px !important;
 }
-
-/* Added for rollout 003: the link back to the web mode is for the screen (the page is looked at in the browser in print mode), not for paper. */
-@media print {
-	.mode-link {
-		display: none !important;
-	}
-}
