@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Instructions for Claude Code sessions working in this repository (the child theme of Twenty Twenty-Five of Eric's travel blog). The context shared with Eric's other projects is in the repository `evlist/shared-room`; the rollouts and the scripts of the three sites are in `evlist/wp-otherguise` (`docs/design/rollout.md`, `tools/staging/`).
+Instructions for Claude Code sessions working in this repository (the child theme of Twenty Twenty-Five of Eric's travel blog). The context shared with Eric's other projects is in the repository `evlist/shared-room`; the rollouts and the scripts of the three sites are in `evlist/shared-room` too (`docs/design/rollout.md`, `tools/staging/`).
 
 ## Language
 

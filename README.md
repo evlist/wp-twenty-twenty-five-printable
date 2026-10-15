@@ -1,6 +1,6 @@
 # Twenty Twenty-Five Printable
 
-A child theme of **Twenty Twenty-Five** that holds the templates of Eric van der Vlist's travel blog, in their web and print versions. Until now these templates were edited in the site editor and lived in the database of each site. As files in this repository they are versioned, reviewed with `diff`, and travel to production with the plugins, as part of a *rollout* (see [`wp-otherguise`](https://github.com/evlist/wp-otherguise), `docs/design/rollout.md`). Twenty Twenty-Five itself stays untouched, so its updates cannot overwrite anything.
+A child theme of **Twenty Twenty-Five** that holds the templates of Eric van der Vlist's travel blog, in their web and print versions. Until now these templates were edited in the site editor and lived in the database of each site. As files in this repository they are versioned, reviewed with `diff`, and travel to production with the plugins, as part of a *rollout* (see [`shared-room`](https://github.com/evlist/shared-room), `docs/design/rollout.md`). Twenty Twenty-Five itself stays untouched, so its updates cannot overwrite anything.
 
 ## What it holds
 
@@ -28,13 +28,13 @@ The print format is **not** under `@media print` (the page to print is meant to 
 ## Rules for the templates
 
 1. **No `theme` attribute in `wp:template-part` blocks.** The site editor writes `"theme":"twentytwentyfive"`; in a child theme such a part renders as **nothing, silently** (tried on WordPress 7.1.3). Without the attribute the part is resolved in the active theme, which falls back to the parent: `<!-- wp:template-part {"slug":"header-large-title","area":"header"} /-->`.
-2. **Edit the files, not the site editor, on staging and production.** A template saved in the site editor is stored in the database and **shadows the file** (tried on WordPress 7.1.3: a database copy attached to the child theme is used instead of the file). Check with `tools/staging/templates.sh check` of the plugin repository, which lists such copies, and removes them (after a backup) when asked.
+2. **Edit the files, not the site editor, on staging and production.** A template saved in the site editor is stored in the database and **shadows the file** (tried on WordPress 7.1.3: a database copy attached to the child theme is used instead of the file). Check with `tools/staging/templates.sh check` of the `shared-room` repository, which lists such copies, and removes them (after a backup) when asked.
 3. **Templates of the database attached to the parent theme are not used by the child** (also tried): after switching to this theme, the customised templates of Twenty Twenty-Five of the site stop applying until their content is in `templates/`. Export them **before** switching.
 4. **Styles of the site editor** (the "global styles": the fonts and the colours chosen there) are stored per theme and **do not follow the switch** (observed on the blog: Fira Sans and Literata became Manrope and Fira Code). What was chosen on the blog is now in `theme.json` (`settings.typography`: the families Literata and Fira Sans and the five sizes; `styles`: the typography of the body, the headings, the buttons, the site title...), exported from the post `wp-global-styles-twentytwentyfive` of 2026-10-12. The global stylesheet it gives was compared on a scratch WordPress with the one that Twenty Twenty-Five gives with that post: identical. To change the fonts, edit `theme.json` here, not the site editor (a choice saved in the site editor is stored for the child theme and goes on top of `theme.json`).
 
 ## Installing
 
-The **name of the directory is the slug of the theme**, and the identifiers that the plugin Otherguise keeps for the variants contain it (`wp-twenty-twenty-five-printable//publication-randonnee`), so it must be **the same on every site**. It is mounted like the plugins: a clone of this repository, under `wp-content/themes/wp-twenty-twenty-five-printable` (the name of the repository). `tools/staging/rollout.sh` of the plugin repository treats it as it treats the plugins (tag, push, apply).
+The **name of the directory is the slug of the theme**, and the identifiers that the plugin Otherguise keeps for the variants contain it (`wp-twenty-twenty-five-printable//publication-randonnee`), so it must be **the same on every site**. It is mounted like the plugins: a clone of this repository, under `wp-content/themes/wp-twenty-twenty-five-printable` (the name of the repository). `tools/staging/rollout.sh` of the `shared-room` repository treats it as it treats the plugins (tag, push, apply).
 
 After activating it on a site: the variants of the modes screen refer to the templates **with the theme in their identifier**, so they must be declared again for this theme.
 
