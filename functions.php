@@ -34,3 +34,25 @@ function twentytwentyfive_printable_editor_styles() {
 	add_editor_style( 'style.css' );
 }
 add_action( 'after_setup_theme', 'twentytwentyfive_printable_editor_styles' );
+
+/**
+ * Declares the image sizes of the print modes, for the module Books of Otherguise.
+ *
+ * Only names and fractions of the usable width of the page (the page minus its margins) are given here: Books
+ * computes the pixels for 300 ppi and registers the sizes. Harmless when the plugin is not active.
+ *
+ * - books-print-full: the main photo of the print templates (about 0.9 of the usable width).
+ * - books-print-thumb: a thumbnail of the gallery, cropped 16:9 (about 0.3 of the usable width).
+ *
+ * @param array $sizes Sizes declared so far.
+ * @return array
+ */
+function twentytwentyfive_printable_books_print_sizes( $sizes ) {
+	$sizes['books-print-full']  = array( 'fraction' => 0.9 );
+	$sizes['books-print-thumb'] = array(
+		'fraction' => 0.3,
+		'ratio'    => '16:9',
+	);
+	return $sizes;
+}
+add_filter( 'books_print_sizes', 'twentytwentyfive_printable_books_print_sizes' );
