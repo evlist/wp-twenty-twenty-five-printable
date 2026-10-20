@@ -42,7 +42,10 @@ add_action( 'after_setup_theme', 'twentytwentyfive_printable_editor_styles' );
  * computes the pixels for 300 ppi and registers the sizes. Harmless when the plugin is not active.
  *
  * - books-print-full: the main photo of the print templates (about 0.9 of the usable width).
- * - books-print-thumb: a thumbnail of the gallery, cropped 16:9 (about 0.3 of the usable width).
+ * - books-print-thumb: a thumbnail of the gallery in the right column of publication-randonnee-print (2 columns in
+ *   70% of the width), cropped 16:9 (about 0.34 of the usable width, 0.36 kept: a little above the measure).
+ * - books-print-half: a thumbnail of the full-width gallery (2 columns) of journee-print and of the monthly
+ *   summary, cropped 16:9 (about 0.49 of the usable width, 0.5 kept).
  *
  * @param array $sizes Sizes declared so far.
  * @return array
@@ -50,7 +53,11 @@ add_action( 'after_setup_theme', 'twentytwentyfive_printable_editor_styles' );
 function twentytwentyfive_printable_books_print_sizes( $sizes ) {
 	$sizes['books-print-full']  = array( 'fraction' => 0.9 );
 	$sizes['books-print-thumb'] = array(
-		'fraction' => 0.3,
+		'fraction' => 0.36,
+		'ratio'    => '16:9',
+	);
+	$sizes['books-print-half']  = array(
+		'fraction' => 0.5,
 		'ratio'    => '16:9',
 	);
 	return $sizes;
