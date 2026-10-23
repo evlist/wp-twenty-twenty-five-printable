@@ -106,3 +106,13 @@ main,
 .gallery figure {
     margin: 2px !important;
 }
+
+/*
+ * The QR code is asked at size 300 in the print templates (245 px, sharp enough for the printer) but shown at the
+ * size it had at 100 (70 px), so that the pages keep fitting.
+ */
+.wpkqcg_qrcode {
+	width: 70px !important;
+	height: auto !important;
+	max-width: none !important;
+}
