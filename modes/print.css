@@ -108,11 +108,14 @@ main,
 }
 
 /*
- * The QR code is asked at size 300 in the print templates (245 px, sharp enough for the printer) but shown at the
- * size it had at 100 (70 px), so that the pages keep fitting.
+ * The QR code is asked at size 300 in the print templates: the plugin then draws 7 px per module, whatever the
+ * number of modules (35 to 39 for our addresses), which makes the image sharp enough for the printer. The zoom
+ * brings it back to 2 CSS px per module (2/7), the size it had at size 100, so that the pages keep fitting.
+ * If the size changes, the zoom is 2 / floor(size / 40).
  */
 .wpkqcg_qrcode {
-	width: 70px !important;
+	zoom: 0.2857 !important;
+	width: auto !important;
 	height: auto !important;
 	max-width: none !important;
 }
