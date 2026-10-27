@@ -18,6 +18,7 @@ header,
 .leaflet-control-container,
 #wpgpxmaps_downloadfile,
 div:empty,
+p:empty,
 nav,
 .wp-block-comments,
 .wp-block-query,
@@ -156,7 +157,12 @@ html {
 
 .wpgpxmaps [style*="height:150px"],
 .wpgpxmaps [style*="height: 150px"] {
-	height: calc(150px * var(--books-k, 1)) !important;
+	height: calc(150px * var(--books-k, 1) * (0.7 + 0.3 * var(--books-k, 1))) !important;
+}
+
+/* The figures under the map: lines closer together on a smaller page (1.5 in the design). */
+.wpgpxmaps_summary {
+	line-height: calc(1.5 - (1 - var(--books-k, 1)) * 0.75);
 }
 
 /* The gallery: a grid whose number of columns follows the width (2 in the design, 3 in an A5; never fewer than 2), not floats of 49 %, which wrap. */
@@ -172,8 +178,16 @@ html {
 	margin: 0 !important;
 }
 
-/* The QR code stays readable: the smaller the page, the less it shrinks (85 % at the least). */
+/*
+ * The QR code is asked at size 300 in the print templates: the plugin then draws 7 px per module, whatever the
+ * number of modules (35 to 39 for our addresses), which makes the image sharp enough for the printer. The zoom
+ * brings it back to 2 CSS px per module (2/7), the size it had at size 100, so that the pages keep fitting.
+ * If the size changes, the zoom is 2 / floor(size / 40). On a page that follows the size of the paper (--books-k) the code shrinks with the
+ * page, down to 85 % so that it can still be read.
+ */
 .wpkqcg_qrcode {
-	width: calc(19mm * max(var(--books-k, 1), 0.85)) !important;
+	zoom: calc(0.2857 * max(var(--books-k, 1), 0.85)) !important;
+	width: auto !important;
 	height: auto !important;
+	max-width: none !important;
 }
