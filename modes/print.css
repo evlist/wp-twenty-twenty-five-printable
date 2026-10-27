@@ -134,9 +134,10 @@ html {
 	font-size: calc(100% * var(--books-t, 1));
 }
 
-/* The photo keeps its share of the page: the constrained width of the design, multiplied. */
-.wp-block-post-featured-image {
-	max-width: calc(645px * var(--books-k, 1));
+/* The photo is as wide as the rest of the page (the constrained layout caps it at 171 mm in the design), cropped a little wider on a smaller page:
+   16:9 in the design, about 2:1 in an A5. Its height follows the page less than its width. */
+.wp-block-post-featured-image img {
+	aspect-ratio: calc(16 / 9 * (1 + (1 - var(--books-k, 1)) * 0.35)) !important;
 }
 
 /* The columns: the narrower the page, the larger the share of the column of the figures, so that they do not wrap. */
@@ -165,11 +166,16 @@ html {
 	line-height: calc(1.5 - (1 - var(--books-k, 1)) * 0.75);
 }
 
-/* The gallery: a grid whose number of columns follows the width (2 in the design, 3 in an A5; never fewer than 2), not floats of 49 %, which wrap. */
+/* The gallery: a grid, not floats of 49 %, which wrap: 2 columns, and 3 when there are 7 photos or more on a page smaller than the design's
+   (at k = 1 the second rule gives the same 2 columns). */
 .gallery {
 	display: grid !important;
-	grid-template-columns: repeat(auto-fill, minmax(min(calc(55mm - (1 - var(--books-k, 1)) * 101mm), 45%), 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(min(55mm, 45%), 1fr));
 	gap: 2px;
+}
+
+.gallery:has(figure:nth-child(7)) {
+	grid-template-columns: repeat(auto-fill, minmax(min(calc(55mm - (1 - var(--books-k, 1)) * 101mm), 45%), 1fr));
 }
 
 .gallery figure {
