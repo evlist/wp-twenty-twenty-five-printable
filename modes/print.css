@@ -105,3 +105,75 @@ main,
 .gallery figure {
     margin: 2px !important;
 }
+
+/*
+ * A page that follows the size of the paper (slice 230 of Otherguise Books, 2026-10-27).
+ *
+ * The day is composed for a page of 190 mm of usable width (an A4 with margins of 10 mm). A book project of Books that prints on a smaller
+ * (or a larger) page gives the print pages the variable --books-k: the usable width of that page over the 190 mm. The sizes below that do not
+ * follow the width of the page by themselves (the heights that the map plugin writes in the HTML, the widths of the constrained layout, the
+ * spacing of the theme, the columns, the gallery) are multiplied by it; the text only down to 85 % (--books-t), so that it stays readable.
+ * Without a project --books-k is not defined, every var() falls back to 1 and the page is what it was (tried: an A4 gives the same heights).
+ *
+ * Tried on 12 days of the testing site, in Chromium: in an A5 with margins of 10 mm (k = 0.674) 9 of the 12 pages are one page, as many as
+ * in an A4; the other three have long texts or many photos and take two pages or more in both.
+ */
+:root {
+	--books-t: max(0.85, var(--books-k, 1));
+	--wp--style--global--content-size: calc(645px * (0.5 + 0.5 * var(--books-k, 1)));
+	--wp--style--global--wide-size: calc(1340px * var(--books-k, 1));
+	--wp--preset--spacing--20: calc(10px * var(--books-k, 1));
+	--wp--preset--spacing--30: calc(20px * var(--books-k, 1));
+	--wp--preset--spacing--40: calc(30px * var(--books-k, 1));
+	--wp--preset--spacing--50: calc(clamp(30px, 5vw, 50px) * var(--books-k, 1));
+	--wp--preset--spacing--60: calc(clamp(30px, 7vw, 70px) * var(--books-k, 1));
+}
+
+html {
+	font-size: calc(100% * var(--books-t, 1));
+}
+
+/* The photo keeps its share of the page: the constrained width of the design, multiplied. */
+.wp-block-post-featured-image {
+	max-width: calc(645px * var(--books-k, 1));
+}
+
+/* The columns: the narrower the page, the larger the share of the column of the figures, so that they do not wrap. */
+#post-grid-column-1 {
+	flex-basis: calc(30% + (1 - var(--books-k, 1)) * 40%);
+}
+
+#post-grid-column-2 {
+	flex-basis: calc(70% - (1 - var(--books-k, 1)) * 40%);
+	padding-left: calc(10px * var(--books-k, 1));
+}
+
+/* The map and the profile of the altitude: the plugin writes their heights in the HTML (200px and 150px). */
+.wpgpxmaps [style*="height:200px"],
+.wpgpxmaps [style*="height: 200px"] {
+	height: calc(200px * var(--books-k, 1)) !important;
+}
+
+.wpgpxmaps [style*="height:150px"],
+.wpgpxmaps [style*="height: 150px"] {
+	height: calc(150px * var(--books-k, 1)) !important;
+}
+
+/* The gallery: a grid whose number of columns follows the width (2 in the design, 3 in an A5; never fewer than 2), not floats of 49 %, which wrap. */
+.gallery {
+	display: grid !important;
+	grid-template-columns: repeat(auto-fill, minmax(min(calc(55mm - (1 - var(--books-k, 1)) * 101mm), 45%), 1fr));
+	gap: 2px;
+}
+
+.gallery figure {
+	float: none !important;
+	width: auto !important;
+	margin: 0 !important;
+}
+
+/* The QR code stays readable: the smaller the page, the less it shrinks (85 % at the least). */
+.wpkqcg_qrcode {
+	width: calc(19mm * max(var(--books-k, 1), 0.85)) !important;
+	height: auto !important;
+}
