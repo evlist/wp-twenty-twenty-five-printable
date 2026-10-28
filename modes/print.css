@@ -191,6 +191,32 @@ html {
 	margin: 0 !important;
 }
 
+/* The gallery of publication-randonnee-print on a wide page (an A4, or a page that is zoomed or scaled to it; a container query, because a media
+   query gives the same width for every page size in print): thumbnails of a fixed size that flow like text, 2 per line beside the column of the
+   figures and 2 per line on the next pages, instead of a grid that a page break cannot cut. A grid is kept whole: a long gallery was sent to the
+   next page whole, where it took the whole width and 3 columns, or lost its last rows when it was taller than a page. The width of a thumbnail
+   is chosen so that 2 fit beside the column of the figures and 3 do not fit on the whole width. A narrow page (an A5 that adapts) keeps the grid. */
+#post-grid {
+	container-type: inline-size;
+}
+
+@container (min-width: 560px) {
+	#post-grid .gallery {
+		display: block !important;
+		font-size: 0;
+		text-align: center;
+		break-inside: auto;
+		page-break-inside: auto;
+	}
+
+	#post-grid .gallery figure {
+		display: inline-block;
+		vertical-align: top;
+		width: calc(35% - (1 - var(--books-k, 1)) * 20%) !important;
+		break-inside: avoid;
+	}
+}
+
 /*
  * The QR code is asked at size 300 in the print templates: the plugin then draws 7 px per module, whatever the
  * number of modules (35 to 39 for our addresses), which makes the image sharp enough for the printer. The zoom
