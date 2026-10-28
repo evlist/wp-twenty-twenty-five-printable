@@ -224,8 +224,8 @@ html {
 	#post-grid .gallery figure {
 		display: inline-block;
 		vertical-align: top;
-		width: calc(33% - (1 - var(--books-k, 1)) * 20% - 2px) !important;
-		margin: 1px !important; /* 2 px between two photos, as the gap of the grid. */
+		width: calc(33% - (1 - var(--books-k, 1)) * 20% - 4px) !important;
+		margin: 2px !important; /* the former margin of the thumbnails: 4 px between two photos, about 1 mm. */
 		break-inside: avoid;
 	}
 }
