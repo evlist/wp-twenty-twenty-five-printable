@@ -31,6 +31,8 @@ The day is composed for a page of **190 mm of usable width** (an A4 with margins
 
 Tried (Chromium, 12 days of the testing site, 2026-10-27): in an A5 with margins of 10 mm, **9 of the 12 days are one page, as many as in an A4**; the other three have long texts or many photos and take two pages or more in both formats. The day that has the most text is the limit: the text is not reduced below 85 %. Nothing was tried yet on a PDF made by Gotenberg, nor with the real map tiles (the test page had none).
 
+**The reference page.** `settings.custom.otherguise.reference` of `theme.json` states the page this theme is composed, optimised and tested for, in millimetres: `width` 210, `height` 297, `margin` 10 and `safety` 5 (an A4 with margins of 1 cm and a safety zone of 5 mm). Otherguise Books reads it to compute `--books-k` (it compares this page with the printer profile of a book project) and nothing else reads it; a theme without it keeps the global format of the settings of Books. WordPress also turns these keys into CSS variables (`--wp--custom--otherguise--reference--width`, etc.), which is harmless. Not tried yet: the reading of the key by the plugin.
+
 ## Rules for the templates
 
 1. **No `theme` attribute in `wp:template-part` blocks.** The site editor writes `"theme":"twentytwentyfive"`; in a child theme such a part renders as **nothing, silently** (tried on WordPress 7.1.3). Without the attribute the part is resolved in the active theme, which falls back to the parent: `<!-- wp:template-part {"slug":"header-large-title","area":"header"} /-->`.

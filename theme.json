@@ -2,6 +2,16 @@
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 3,
 	"settings": {
+		"custom": {
+			"otherguise": {
+				"reference": {
+					"width": 210,
+					"height": 297,
+					"margin": 10,
+					"safety": 5
+				}
+			}
+		},
 		"typography": {
 			"fontFamilies": [
 				{
