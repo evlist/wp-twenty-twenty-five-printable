@@ -212,7 +212,8 @@ html {
 	#post-grid .gallery figure {
 		display: inline-block;
 		vertical-align: top;
-		width: calc(35% - (1 - var(--books-k, 1)) * 20%) !important;
+		width: calc(34% - (1 - var(--books-k, 1)) * 20%) !important;
+		margin: 1px !important; /* 2 px between two photos, as the gap of the grid. */
 		break-inside: avoid;
 	}
 }
