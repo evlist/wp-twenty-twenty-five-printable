@@ -65,8 +65,10 @@ main,
 #post-grid-column-1 {
     margin-block-start: 0px;
 	float: left;
+	box-sizing: border-box;
 	width: 30%;
-	margin-right: 10px;
+	/* A padding, not a margin: the constrained layout of WordPress gives the children of #post-grid margin-right: auto !important. */
+	padding-right: 20px;
 }
 
 .wpgpxmaps_summary {
@@ -152,7 +154,7 @@ html {
 /* The column of the figures: the narrower the page, the larger its share, so that the figures do not wrap. */
 #post-grid-column-1 {
 	width: calc(30% + (1 - var(--books-k, 1)) * 40%);
-	margin-right: calc(10px * var(--books-k, 1));
+	padding-right: calc(20px * var(--books-k, 1));
 }
 
 /* The map and the profile of the altitude: the plugin writes their heights in the HTML (200px and 150px). */
