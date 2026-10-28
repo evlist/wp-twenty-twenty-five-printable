@@ -45,19 +45,28 @@ main,
     page-break-inside: avoid; /* or 'auto' */
 }
 
+/* The column of the figures floats on the left and the text and the photos flow beside it: a publication that is longer than a page then uses the
+   whole width of the next pages, where two flex columns left the left third empty (the shorter column ended on the first page). */
 #post-grid {
-	display: flex;
+	display: block;
+}
+
+#post-grid::after {
+	content: "";
+	display: block;
+	clear: both;
 }
 
 #post-grid-column-2 {
     margin-block-start: 0px;
-	flex: 70%;
-	padding-left: 10px;
+	display: block;
 }
 
 #post-grid-column-1 {
     margin-block-start: 0px;
-	flex: 30%;
+	float: left;
+	width: 30%;
+	margin-right: 10px;
 }
 
 .wpgpxmaps_summary {
@@ -140,14 +149,10 @@ html {
 	aspect-ratio: calc(16 / 9 * (1 + (1 - var(--books-k, 1)) * 0.35)) !important;
 }
 
-/* The columns: the narrower the page, the larger the share of the column of the figures, so that they do not wrap. */
+/* The column of the figures: the narrower the page, the larger its share, so that the figures do not wrap. */
 #post-grid-column-1 {
-	flex-basis: calc(30% + (1 - var(--books-k, 1)) * 40%);
-}
-
-#post-grid-column-2 {
-	flex-basis: calc(70% - (1 - var(--books-k, 1)) * 40%);
-	padding-left: calc(10px * var(--books-k, 1));
+	width: calc(30% + (1 - var(--books-k, 1)) * 40%);
+	margin-right: calc(10px * var(--books-k, 1));
 }
 
 /* The map and the profile of the altitude: the plugin writes their heights in the HTML (200px and 150px). */
