@@ -192,19 +192,31 @@ html {
 }
 
 /* The gallery of publication-randonnee-print on a wide page (an A4, or a page that is zoomed or scaled to it; a container query, because a media
-   query gives the same width for every page size in print): thumbnails of a fixed size that flow like text, 2 per line beside the column of the
-   figures and 2 per line on the next pages, instead of a grid that a page break cannot cut. A grid is kept whole: a long gallery was sent to the
-   next page whole, where it took the whole width and 3 columns, or lost its last rows when it was taller than a page. The width of a thumbnail
-   is chosen so that 2 fit beside the column of the figures and 3 do not fit on the whole width. A narrow page (an A5 that adapts) keeps the grid. */
+   query gives the same width for every page size in print): thumbnails of a fixed size that flow like text, instead of a grid that a page break
+   cannot cut. A grid is kept whole: a long gallery was sent to the next page whole, where it took the whole width and 3 columns, or lost its last
+   rows when it was taller than a page. The page is cut in 3 columns of a third: the column of the figures is one of them (a little more than a
+   third, so that the thumbnails fit), a thumbnail is a third (a little less, minus its margins). So 2 thumbnails stand beside the column of the
+   figures, and the next pages have 3 per line, of the same size and in the same columns. A narrow page (an A5 that adapts) keeps the grid. The
+   gallery is given the whole width of the page (the constrained layout would centre it in the content width, and the columns would not line up). */
 #post-grid {
 	container-type: inline-size;
 }
 
 @container (min-width: 560px) {
+	#post-grid-column-1 {
+		width: calc(33.4% + (1 - var(--books-k, 1)) * 40%);
+	}
+
+	#post-grid .wp-block-wp-media-helper-gallery {
+		max-width: none !important;
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+	}
+
 	#post-grid .gallery {
 		display: block !important;
-		font-size: 0;
-		text-align: center;
+		font-size: 0; /* no space between two thumbnails */
+		text-align: left;
 		break-inside: auto;
 		page-break-inside: auto;
 	}
@@ -212,7 +224,7 @@ html {
 	#post-grid .gallery figure {
 		display: inline-block;
 		vertical-align: top;
-		width: calc(34% - (1 - var(--books-k, 1)) * 20%) !important;
+		width: calc(33% - (1 - var(--books-k, 1)) * 20% - 2px) !important;
 		margin: 1px !important; /* 2 px between two photos, as the gap of the grid. */
 		break-inside: avoid;
 	}
