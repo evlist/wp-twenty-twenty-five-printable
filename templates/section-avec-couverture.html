@@ -4,9 +4,33 @@
 <main class="wp-block-group" style="margin-top:var(--wp--preset--spacing--60)"><!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull" id="post-content" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:post-title {"level":1} /-->
 
-<!-- wp:modes/link {"mode":"print","label":"Print","icon":"print"} /-->
-
 <!-- wp:post-featured-image {"aspectRatio":"1","sizeSlug":"large"} /-->
+
+<!-- wp:group {"className":"has-link-color","style":{"spacing":{"blockGap":"0.2em","margin":{"bottom":"var:preset|spacing|60"}}},"textColor":"accent-4","fontSize":"small","layout":{"type":"flex","flexWrap":"wrap"}} -->
+<div class="wp-block-group has-link-color has-accent-4-color has-text-color has-small-font-size" style="margin-bottom:var(--wp--preset--spacing--60)"><!-- wp:modes/link {"mode":"print","label":"Print","icon":"print"} /-->
+
+<!-- wp:paragraph -->
+<p>Écrit par </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:post-author-name {"isLink":true} /-->
+
+<!-- wp:paragraph {"style":{"typography":{"fontWeight":"300"}}} -->
+<p style="font-weight:300">dans</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:post-terms {"term":"category","className":"no-print","style":{"typography":{"fontWeight":"300","fontStyle":"normal"}}} /-->
+
+<!-- wp:paragraph {"className":"date-prefix"} -->
+<p class="date-prefix">le </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:post-date {"format":"j F Y"} /-->
+
+<!-- wp:paragraph -->
+<p>.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
 
 <!-- wp:post-excerpt /-->
 
