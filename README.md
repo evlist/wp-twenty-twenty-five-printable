@@ -9,6 +9,7 @@ Exported from the staging copy of the blog on 2026-10-12 (the templates and part
 | Kind | Files |
 |---|---|
 | Custom templates, web / print | `journee` / `journee-print`; `publication-randonnee` / `publication-randonnee-print`; `wp-custom-template-r-sum-mensuel-randonn-e` ("Résumé mensuel randonnée") / `wp-custom-template-r-sum-mensuel-randonn-e-print` |
+| Generic template, web / print | `section-avec-couverture` / `section-avec-couverture-print` ("Section avec couverture", for posts and pages): a cover (title, featured image, excerpt), the content of the page, then the block `books/section-units` of Otherguise Books, which lists the units of a section (web: with the inner blocks of the block, repeated for each unit) or inserts their pages at its place (print, merged by Books; the block is at the root of the template, not in a group). A back cover is the business of the content. Never tried on a WordPress with this theme |
 | Customised standard templates | `archive`, `home`, `search`, `single` |
 | Customised template parts | `header` (it only delegates to the part `header-large-title`), `footer` (**empty**: the blog has no footer) |
 

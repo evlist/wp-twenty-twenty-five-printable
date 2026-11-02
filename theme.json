@@ -522,6 +522,22 @@
 			"postTypes": [
 				"post"
 			]
+		},
+		{
+			"name": "section-avec-couverture",
+			"title": "Section avec couverture",
+			"postTypes": [
+				"post",
+				"page"
+			]
+		},
+		{
+			"name": "section-avec-couverture-print",
+			"title": "Section avec couverture print",
+			"postTypes": [
+				"post",
+				"page"
+			]
 		}
 	]
 }
