@@ -63,3 +63,65 @@ function twentytwentyfive_printable_books_print_sizes( $sizes ) {
 	return $sizes;
 }
 add_filter( 'books_print_sizes', 'twentytwentyfive_printable_books_print_sizes' );
+
+/**
+ * Registers the custom field "byline" (the line of credits of a post or a page) so that it shows in the block editor.
+ *
+ * @return void
+ */
+function twentytwentyfive_printable_register_byline_meta() {
+	foreach ( array( 'post', 'page' ) as $post_type ) {
+		register_post_meta(
+			$post_type,
+			'byline',
+			array(
+				'type'              => 'string',
+				'single'            => true,
+				'show_in_rest'      => true,
+				'sanitize_callback' => 'sanitize_text_field',
+			)
+		);
+	}
+}
+add_action( 'init', 'twentytwentyfive_printable_register_byline_meta' );
+
+/**
+ * Block binding source "wp-twenty-twenty-five-printable/byline": the custom field "byline" of the post when it is filled in, the
+ * name of the author of the post otherwise.
+ *
+ * @param array         $source_args    Arguments of the binding (unused).
+ * @param WP_Block|null $block_instance The block that is bound.
+ * @return string
+ */
+function twentytwentyfive_printable_byline_value( $source_args, $block_instance ) {
+	unset( $source_args );
+	$post_id = ( $block_instance && ! empty( $block_instance->context['postId'] ) ) ? (int) $block_instance->context['postId'] : (int) get_the_ID();
+	if ( ! $post_id ) {
+		return '';
+	}
+	$byline = trim( (string) get_post_meta( $post_id, 'byline', true ) );
+	if ( '' === $byline ) {
+		$byline = (string) get_the_author_meta( 'display_name', (int) get_post_field( 'post_author', $post_id ) );
+	}
+	return esc_html( $byline );
+}
+
+/**
+ * Declares the binding source above (WordPress 6.5 or later; nothing happens on an older version).
+ *
+ * @return void
+ */
+function twentytwentyfive_printable_register_byline_source() {
+	if ( ! function_exists( 'register_block_bindings_source' ) ) {
+		return;
+	}
+	register_block_bindings_source(
+		'wp-twenty-twenty-five-printable/byline',
+		array(
+			'label'              => __( 'Byline or author', 'twentytwentyfive-printable' ),
+			'get_value_callback' => 'twentytwentyfive_printable_byline_value',
+			'uses_context'       => array( 'postId' ),
+		)
+	);
+}
+add_action( 'init', 'twentytwentyfive_printable_register_byline_source' );
