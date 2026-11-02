@@ -146,8 +146,9 @@ html {
 }
 
 /* The photo is as wide as the rest of the page (the constrained layout caps it at 171 mm in the design), cropped a little wider on a smaller page:
-   16:9 in the design, about 2:1 in an A5. Its height follows the page less than its width. */
-.wp-block-post-featured-image img {
+   16:9 in the design, about 2:1 in an A5. Its height follows the page less than its width. A block with the class is-square (the cover of
+   section-avec-couverture-print) keeps the ratio of its template. */
+.wp-block-post-featured-image:not(.is-square) img {
 	aspect-ratio: calc(16 / 9 * (1 + (1 - var(--books-k, 1)) * 0.35)) !important;
 }
 
