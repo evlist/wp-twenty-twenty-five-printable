@@ -538,6 +538,22 @@
 				"post",
 				"page"
 			]
+		},
+		{
+			"name": "section",
+			"title": "Section",
+			"postTypes": [
+				"post",
+				"page"
+			]
+		},
+		{
+			"name": "section-print",
+			"title": "Section print",
+			"postTypes": [
+				"post",
+				"page"
+			]
 		}
 	]
 }
