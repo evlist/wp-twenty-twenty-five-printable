@@ -30,6 +30,12 @@ footer,
     display: none !important;
 }
 
+/* The list of the units of a section (block books/section-list) is wanted in print: the Query Loops are hidden above, as the lists of other
+   posts of the web templates, but not this one. */
+.wp-block-books-section-list .wp-block-query {
+	display: block !important;
+}
+
 html,
 main,
 #post-content {
