@@ -36,6 +36,8 @@ Tried (Chromium, 12 days of the testing site, 2026-10-27): in an A5 with margins
 
 **The reference page.** `settings.custom.otherguise.reference` of `theme.json` states the page this theme is composed, optimised and tested for, in millimetres: `width` 210, `height` 297, `margin` 10 and `safety` 5 (an A4 with margins of 1 cm and a safety zone of 5 mm). Otherguise Books reads it to compute `--books-k` (it compares this page with the printer profile of a book project) and nothing else reads it; a theme without it keeps the global format of the settings of Books. WordPress also turns these keys into CSS variables (`--wp--custom--otherguise--reference--width`, etc.), which is harmless. Not tried yet: the reading of the key by the plugin.
 
+**A unit that starts a page.** The merge of Otherguise Books no longer puts a page break before each unit: a print template that must start a page carries the class `starts-page` on its main group (`modes/print.css`: `break-before: page`). The four print templates with a group do (the three days or summaries and the cover of a section); `section-print`, which is the content alone, does not, and a new template chooses. Not tried in Chromium or on a PDF: an adjacent `break-after` and `break-before` should make a single break, not a blank page.
+
 ## Rules for the templates
 
 1. **No `theme` attribute in `wp:template-part` blocks.** The site editor writes `"theme":"twentytwentyfive"`; in a child theme such a part renders as **nothing, silently** (tried on WordPress 7.1.3). Without the attribute the part is resolved in the active theme, which falls back to the parent: `<!-- wp:template-part {"slug":"header-large-title","area":"header"} /-->`.

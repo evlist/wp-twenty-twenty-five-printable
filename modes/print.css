@@ -250,3 +250,10 @@ html {
 	height: auto !important;
 	max-width: none !important;
 }
+
+/* A unit that starts a page: the class is put on the group of a print template (a day of a book, one per page); a template without it follows
+   the previous one on the same page (chapters that run on). A break-before is used rather than a break-after, so that no blank page is left
+   after the last unit; the first one of a document is ignored by the browser. */
+.starts-page {
+	break-before: page;
+}
