@@ -88,3 +88,9 @@ p img.alignright, p img.alignleft {margin-top:0;}
   font-family: 'Ultra', sans-serif;
   font-weight: bolder;
 }
+
+/* print-only: a block with this class is shown in the print mode only (the counterpart of no-print, defined in modes/print.css). The plugin
+   Otherguise puts the class of the requested mode on the body; where the Modes setting is off, that class does not exist and the block is hidden. */
+body:not(.modes-mode-print) .print-only {
+	display: none;
+}
