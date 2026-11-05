@@ -152,9 +152,9 @@ html {
 }
 
 /* The photo is as wide as the rest of the page (the constrained layout caps it at 171 mm in the design). The class crop-16-9, put on the featured
-   image of journee-print, publication-randonnee-print and the monthly summary print, crops it a little wider on a smaller page: 16:9 in the
-   design, about 2:1 in an A5, its height following the page less than its width. Any other featured image (the cover of
-   section-avec-couverture-print, an image placed in the content of a post) keeps the ratio of its block. */
+   image of journee-print and publication-randonnee-print, crops it a little wider on a smaller page: 16:9 in the
+   design, about 2:1 in an A5, its height following the page less than its width. Any other featured image (the square cover of
+   section-avec-couverture-print and of the monthly summary print, an image placed in the content of a post) keeps the ratio of its block. */
 .wp-block-post-featured-image.crop-16-9 img {
 	aspect-ratio: calc(16 / 9 * (1 + (1 - var(--books-k, 1)) * 0.35)) !important;
 }
